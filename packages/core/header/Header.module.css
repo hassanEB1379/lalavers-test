@@ -1,7 +1,11 @@
 .container {
     padding: 15px 25px;
     display: flex;
+    height: var(--header-h);
     justify-content: space-between;
     align-items: center;
     background-color: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: var(--high);
 }
