@@ -3,5 +3,9 @@
 }
 
 .main {
-    display: flex;
+    padding-left: var(--sidebar-w);
+}
+
+.pageContent {
+    min-height: 100%;
 }
