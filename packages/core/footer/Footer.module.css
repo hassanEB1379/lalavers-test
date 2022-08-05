@@ -3,10 +3,15 @@
     position: relative;
 }
 
-.main {
+.content {
     background-color: var(--dark);
     border-radius: 10px;
     padding: 60px;
+}
+
+.contentContainer {
+    max-width: 1320px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
