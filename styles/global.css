@@ -1,0 +1,41 @@
+:root {
+    /* colors */
+    --black: #131313;
+    --dark: #343434;
+    --darker: #1F1F1F;
+    --blue: #3FC1C9;
+    --white: #FFFFFF;
+
+    /* palette */
+    --primary: var(--blue);
+    --bg: var(--darker);
+    --text: var(--white);
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
