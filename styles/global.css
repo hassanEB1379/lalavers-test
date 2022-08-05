@@ -10,6 +10,9 @@
     --primary: var(--blue);
     --bg: var(--darker);
     --text: var(--white);
+
+    /* sizes */
+    --sidebar-w: 140px
 }
 
 html {
@@ -22,6 +25,12 @@ body {
     font-family: 'Jost', sans-serif;
     background-color: var(--bg);
     color: var(--text);
+}
+
+html,
+body,
+#__next {
+    height: 100%;
 }
 
 h1,
