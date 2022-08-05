@@ -6,12 +6,12 @@ import styles from "./Header.module.css";
 
 export const Header = () => {
     return (
-        <nav className={styles.container}>
+        <header className={styles.container}>
             <div>
                 <Image alt="logo" src={logo} />
             </div>
 
             <Button>Sign in</Button>
-        </nav>
+        </header>
     );
 };
