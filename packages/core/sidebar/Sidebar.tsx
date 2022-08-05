@@ -4,7 +4,11 @@ import { NavigationMenu } from "@app/navigation";
 export const Sidebar = () => {
     return (
         <aside className={styles.container}>
-            <NavigationMenu />
+            <NavigationMenu
+                upperCase
+                showIcon
+                classes={{ listItem: styles.listItem }}
+            />
         </aside>
     );
 };
