@@ -13,11 +13,11 @@ export const MainLayout = ({ children }: Props) => {
     return (
         <div className={styles.container}>
             <Header />
+            <Sidebar />
             <main className={styles.main}>
-                <Sidebar />
-                {children}
+                <div className={styles.pageContent}>{children}</div>
+                <Footer />
             </main>
-            <Footer />
         </div>
     );
 };
