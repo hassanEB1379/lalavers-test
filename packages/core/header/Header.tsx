@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@app/button";
-import { logo } from "@app/header/assets";
+import { logo } from "@app/assets";
 
 import styles from "./Header.module.css";
 
