@@ -1,5 +1,5 @@
-export interface NavItem {
+export interface ListItem {
     id: number;
     label: string;
-    icon: string;
+    icon?: string;
 }
