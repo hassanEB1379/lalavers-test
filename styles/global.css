@@ -12,7 +12,14 @@
     --text: var(--white);
 
     /* sizes */
-    --sidebar-w: 140px
+    --sidebar-w: 140px;
+    --header-h: 72px;
+
+    /* z-index */
+    --zero: 0;
+    --low: 10;
+    --mid: 100;
+    --high: 1000;
 }
 
 html {
@@ -41,6 +48,12 @@ h5,
 h6,
 p {
     margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 *,
