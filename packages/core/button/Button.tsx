@@ -1,12 +1,7 @@
-import React, { MouseEventHandler } from "react";
 import styles from "./Button.module.css";
+import { ButtonProps } from "@app/button/shared";
 
-interface Props {
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-    children: React.ReactNode | string;
-}
-
-export const Button = ({ children, onClick }: Props) => {
+export const Button = ({ children, onClick }: ButtonProps) => {
     return (
         <button onClick={onClick} className={styles.button}>
             {children}
