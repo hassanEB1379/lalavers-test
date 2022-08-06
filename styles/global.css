@@ -60,4 +60,5 @@ ul {
 *:after,
 *:before {
     box-sizing: inherit;
+    font-family: inherit;
 }
