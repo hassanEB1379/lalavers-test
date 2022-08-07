@@ -4,12 +4,27 @@ import {
     ReactNode,
     SetStateAction,
     useContext,
+    useEffect,
     useState,
 } from "react";
+import { getCurrentUser } from "@app/authentication/data";
 
-type AuthDispatch = Dispatch<SetStateAction<boolean>>;
+type AuthDispatch = Dispatch<SetStateAction<User>>;
 
-const AuthContext = createContext<boolean | null>(null);
+interface UserProperties {
+    name?: string;
+}
+
+type User = UserProperties | null;
+
+export interface AuthContextValues {
+    isAuthenticated: boolean;
+    user: User;
+    loading: boolean;
+}
+
+const AuthContext = createContext<AuthContextValues | null>(null);
+
 const AuthDispatchContext = createContext<AuthDispatch | null>(null);
 
 export function useAuth() {
@@ -21,11 +36,25 @@ export function useAuthDispatch() {
 }
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [isAuthorized, setIsAuthorized] = useState(false);
+    const [user, setUser] = useState<User>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getCurrentUser()
+            .then(res => {
+                setUser(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, []);
 
     return (
-        <AuthContext.Provider value={isAuthorized}>
-            <AuthDispatchContext.Provider value={setIsAuthorized}>
+        <AuthContext.Provider
+            value={{ isAuthenticated: !!user, user, loading }}
+        >
+            <AuthDispatchContext.Provider value={setUser}>
                 {children}
             </AuthDispatchContext.Provider>
         </AuthContext.Provider>
