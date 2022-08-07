@@ -21,9 +21,7 @@ export function useAuthDispatch() {
 }
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    let hasToken = document.cookie.split(";")[0].indexOf("token") !== -1;
-
-    const [isAuthorized, setIsAuthorized] = useState(hasToken);
+    const [isAuthorized, setIsAuthorized] = useState(false);
 
     return (
         <AuthContext.Provider value={isAuthorized}>
