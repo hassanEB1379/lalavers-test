@@ -1,14 +1,9 @@
 import { NextPageWithLayout } from "@app/types";
 import { MainLayout } from "@app/layout";
 import { SignUpPage } from "@app/sign-up";
-import { AccessLevel } from "@app/authentication";
 
 const SignUp: NextPageWithLayout = () => {
-    return (
-        <AccessLevel level="restricted">
-            <SignUpPage />
-        </AccessLevel>
-    );
+    return <SignUpPage />;
 };
 
 SignUp.getLayout = function (page) {
