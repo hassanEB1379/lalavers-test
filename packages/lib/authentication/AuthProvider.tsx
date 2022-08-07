@@ -1,27 +1,12 @@
 import {
     createContext,
-    Dispatch,
     ReactNode,
-    SetStateAction,
     useContext,
     useEffect,
     useState,
 } from "react";
+import { AuthContextValues, AuthDispatch, User } from "@app/authentication";
 import { getCurrentUser } from "@app/authentication/data";
-
-type AuthDispatch = Dispatch<SetStateAction<User>>;
-
-interface UserProperties {
-    name?: string;
-}
-
-type User = UserProperties | null;
-
-export interface AuthContextValues {
-    isAuthenticated: boolean;
-    user: User;
-    loading: boolean;
-}
 
 const AuthContext = createContext<AuthContextValues | null>(null);
 
