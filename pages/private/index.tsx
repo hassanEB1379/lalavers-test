@@ -1,12 +1,12 @@
 import { MainLayout } from "@app/layout";
 import { NextPageWithLayout } from "@app/types";
-import { AccessLevel } from "@app/authentication";
+import { PrivatePage } from "@app/authentication";
 
 const Private: NextPageWithLayout = () => {
     return (
-        <AccessLevel level="private">
+        <PrivatePage>
             <h1>Private page</h1>
-        </AccessLevel>
+        </PrivatePage>
     );
 };
 
