@@ -6,8 +6,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         const token = Math.random().toString(16).slice(2);
         res.setHeader(
             "set-cookie",
-            serialize("token", token, { httpOnly: true })
+            serialize("token", token, { path: "/", httpOnly: true })
         );
-        res.status(200).json({ message: "you logged in successfully" });
+        res.status(200).json({
+            message: "you logged in successfully",
+            user: { name: "User" },
+        });
     }
 }
