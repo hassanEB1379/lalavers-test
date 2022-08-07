@@ -1,4 +1,4 @@
-import { SignInApiBody } from "@app/authentication/types";
+import { SignInApiBody } from "@app/authentication";
 import { api, endpoints } from "@app/api";
 
 export const signIn = (body: SignInApiBody) => {
