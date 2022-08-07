@@ -1,10 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
-import { SignInFormFields } from "@app/types";
 import { signIn as signInApi } from "@app/authentication/data";
+import { SignInFormFields } from "@app/types";
 import { SignInApiBody } from "@app/authentication/types";
+import { useAuthDispatch } from "../AuthProvider";
+import { useRouter } from "next/router";
 
 export function useSignIn() {
-    const { mutate, ...states } = useMutation(signInApi);
+    const setUser = useAuthDispatch();
+    const router = useRouter();
 
     function signin(data: SignInFormFields) {
         const body: SignInApiBody = {
@@ -13,18 +15,15 @@ export function useSignIn() {
             captchaCode: "hhhhhhhh",
         };
 
-        mutate(body, {
-            onSuccess: function (res) {
-                console.log(res);
-            },
-            onError: function (e) {
-                console.log(e);
-            },
+        signInApi(body).then(res => {
+            if (setUser) {
+                setUser(res.data.user);
+                router.push("/");
+            }
         });
     }
 
     return {
-        ...states,
         signin,
     };
 }
