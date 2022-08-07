@@ -1,5 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
-import { useAuth } from "./AuthProvider";
+import { ReactNode, useEffect } from "react";
+import { AuthContextValues, useAuth } from "./AuthProvider";
 import { useRouter } from "next/router";
 
 interface AccessLevelProps {
@@ -8,19 +8,24 @@ interface AccessLevelProps {
 }
 
 export const AccessLevel = ({ children, level }: AccessLevelProps) => {
-    const [show, setShow] = useState(false);
-    const isAuthorized = useAuth();
+    const { isAuthenticated, loading } = useAuth() as AuthContextValues;
     const router = useRouter();
 
     useEffect(() => {
-        if (!isAuthorized && level === "private") {
-            router.push("/sign-in");
-        } else if (isAuthorized && level === "restricted") {
-            router.push("/");
-        } else {
-            setShow(true);
-        }
-    }, [isAuthorized, level, router]);
+        if (!loading) {
+            if (!isAuthenticated && level === "private") {
+                router.push("/sign-in");
+            }
 
-    return <>{show && children}</>;
+            if (isAuthenticated && level === "restricted") {
+                router.push("/");
+            }
+        }
+    }, [isAuthenticated, level, loading, router]);
+
+    if (loading) {
+        return null;
+    }
+
+    return <>{children}</>;
 };
