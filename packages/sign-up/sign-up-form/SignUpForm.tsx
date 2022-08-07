@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@app/button";
-import { signup } from "@app/sign-up/data";
-
 import type { SignUpFormFields } from "@app/sign-up/shared";
+import { useSignUp } from "./hook";
 
 import styles from "./SignUpForm.module.css";
 
 export const SignUpForm = () => {
     const { register, handleSubmit } = useForm<SignUpFormFields>();
+
+    const signup = useSignUp();
 
     const onSubmit = handleSubmit(signup);
 
@@ -35,6 +36,11 @@ export const SignUpForm = () => {
                     {...register("phone", { required: true })}
                     placeholder="Phone"
                     type="number"
+                />
+                <input
+                    {...register("countryCode", { required: true })}
+                    placeholder="Country Code"
+                    type="text"
                 />
                 <input
                     {...register("password", { required: true })}

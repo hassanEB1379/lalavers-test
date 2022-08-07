@@ -1,13 +1,10 @@
 import React from "react";
 import { NextPageWithLayout } from "@app/types";
 import { MainLayout } from "@app/layout";
+import { SignInPage } from "@app/sign-in";
 
 const SignIn: NextPageWithLayout = () => {
-    return (
-        <div>
-            <h1>sign in</h1>
-        </div>
-    );
+    return <SignInPage />;
 };
 
 SignIn.getLayout = function (page) {
