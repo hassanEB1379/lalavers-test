@@ -1,15 +1,25 @@
 import Image from "next/image";
 import { Button } from "@app/button";
+import { AuthContextValues, useAuth, useLogout } from "@app/authentication";
 import { logo } from "@app/assets";
 
 import styles from "./Header.module.css";
 
 export const Header = () => {
+    const logout = useLogout();
+    const { isAuthenticated, user } = useAuth() as AuthContextValues;
+
     return (
         <header className={styles.container}>
             <Image alt="logo" src={logo} />
 
-            <Button>Sign in</Button>
+            {isAuthenticated ? (
+                <h2>
+                    Welcome {user?.name}, <span onClick={logout}>Log out</span>
+                </h2>
+            ) : (
+                <Button type="button">Sign in</Button>
+            )}
         </header>
     );
 };
