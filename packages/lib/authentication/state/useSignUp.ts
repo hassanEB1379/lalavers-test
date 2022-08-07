@@ -1,14 +1,11 @@
 import { SignUpFormFields } from "@app/types";
 import { signUp as signUpApi } from "@app/authentication/data";
-import { SignUpApiBody } from "../types";
-import { useAuthDispatch } from "../AuthProvider";
-import { useRouter } from "next/router";
+import { SignUpApiBody, useAuthorize } from "@app/authentication/shared";
 
 export function useSignUp() {
-    const setUser = useAuthDispatch();
-    const router = useRouter();
+    const authorize = useAuthorize();
 
-    function signup(data: SignUpFormFields) {
+    return function signup(data: SignUpFormFields) {
         const body: SignUpApiBody = {
             firstName: data.firstName,
             lastName: data.lastName,
@@ -21,15 +18,6 @@ export function useSignUp() {
             captchaCode: "hhhhhhhh",
         };
 
-        signUpApi(body).then(res => {
-            if (setUser) {
-                setUser(res.data.user);
-                router.push("/");
-            }
-        });
-    }
-
-    return {
-        signup,
+        authorize(() => signUpApi(body));
     };
 }

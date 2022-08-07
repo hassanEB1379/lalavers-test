@@ -8,7 +8,7 @@ import styles from "./SignInForm.module.css";
 export const SignInForm = () => {
     const { register, handleSubmit } = useForm<SignInFormFields>();
 
-    const { signin } = useSignIn();
+    const signin = useSignIn();
 
     const onSubmit = handleSubmit(signin);
 

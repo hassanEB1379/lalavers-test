@@ -8,7 +8,7 @@ import styles from "./SignUpForm.module.css";
 export const SignUpForm = () => {
     const { register, handleSubmit } = useForm<SignUpFormFields>();
 
-    const { signup, isError, isLoading } = useSignUp();
+    const signup = useSignUp();
 
     const onSubmit = handleSubmit(signup);
 
@@ -48,9 +48,7 @@ export const SignUpForm = () => {
                     type="password"
                 />
 
-                <Button type="submit">
-                    {isLoading ? "Loading" : isError ? "Retry" : "Submit"}
-                </Button>
+                <Button type="submit">Submit</Button>
             </div>
         </form>
     );
