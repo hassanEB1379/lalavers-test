@@ -1,1 +1,1 @@
-export const baseURL = "https://auth.megaverse.today/api/";
+export const baseURL = "http://localhost:3000/api";
