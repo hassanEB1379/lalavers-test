@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@app/button";
-import { SignInFormFields } from "@app/sign-in/shared";
-import { useSignIn } from "./hook";
+import { SignInFormFields } from "@app/types";
+import { useSignIn } from "@app/authentication";
 
 import styles from "./SignInForm.module.css";
 
 export const SignInForm = () => {
     const { register, handleSubmit } = useForm<SignInFormFields>();
 
-    const signin = useSignIn();
+    const { signin } = useSignIn();
 
     const onSubmit = handleSubmit(signin);
 

@@ -9,3 +9,9 @@ export interface SignUpApiBody {
     password: string;
     captchaCode: string;
 }
+
+export interface SignInApiBody {
+    id: string;
+    password: string;
+    captchaCode: string;
+}

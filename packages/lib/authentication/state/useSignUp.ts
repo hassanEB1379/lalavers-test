@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { SignUpFormFields } from "@app/types";
 import { signUp as signUpApi } from "@app/authentication/data";
-import { SignUpApiBody } from "./types";
+import { SignUpApiBody } from "../types";
 
 export function useSignUp() {
     const { mutate, ...states } = useMutation(signUpApi);

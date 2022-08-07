@@ -18,3 +18,8 @@ export interface SignUpFormFields {
     password: string;
     countryCode: string;
 }
+
+export interface SignInFormFields {
+    email: string;
+    password: string;
+}
