@@ -9,3 +9,11 @@
     top: 0;
     z-index: var(--high);
 }
+
+.logout {
+    cursor: pointer;
+}
+
+.logout:hover {
+    text-decoration: underline;
+}

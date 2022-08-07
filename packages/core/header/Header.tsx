@@ -15,7 +15,10 @@ export const Header = () => {
 
             {isAuthenticated ? (
                 <h2>
-                    Welcome {user?.name}, <span onClick={logout}>Log out</span>
+                    Welcome {user?.name},{" "}
+                    <span className={styles.logout} onClick={logout}>
+                        Log out
+                    </span>
                 </h2>
             ) : (
                 <Button type="button">Sign in</Button>
