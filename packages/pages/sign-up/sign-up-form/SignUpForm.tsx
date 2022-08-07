@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
+import { SignUpFormFields } from "@app/types";
 import { Button } from "@app/button";
-import type { SignUpFormFields } from "@app/sign-up/shared";
-import { useSignUp } from "./hook";
+import { useSignUp } from "@app/authentication";
 
 import styles from "./SignUpForm.module.css";
 
 export const SignUpForm = () => {
     const { register, handleSubmit } = useForm<SignUpFormFields>();
 
-    const signup = useSignUp();
+    const { signup, isError, isLoading } = useSignUp();
 
     const onSubmit = handleSubmit(signup);
 
@@ -48,7 +48,9 @@ export const SignUpForm = () => {
                     type="password"
                 />
 
-                <Button type="submit">Submit</Button>
+                <Button type="submit">
+                    {isLoading ? "Loading" : isError ? "Retry" : "Submit"}
+                </Button>
             </div>
         </form>
     );
