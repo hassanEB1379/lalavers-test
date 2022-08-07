@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@app/button";
-import { AuthContextValues, useAuth, useLogout } from "@app/authentication";
+import { useAuth, useLogout, AuthContextValues } from "@app/authentication";
 import { logo } from "@app/assets";
 
 import styles from "./Header.module.css";
@@ -21,7 +21,9 @@ export const Header = () => {
                     </span>
                 </h2>
             ) : (
-                <Button type="button">Sign in</Button>
+                <Button link="/sign-in" type="button">
+                    Sign in
+                </Button>
             )}
         </header>
     );
